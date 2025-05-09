@@ -74,7 +74,6 @@ body {
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0.5, 0.4);
-    /* text-align: center; */
     transition: transform 0.3s ease;
     margin-bottom: 20px;
 }
@@ -83,7 +82,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Meal card title */
 .meal-card h3 {
     font-size: 20px;
     margin-left: 30px;
@@ -91,20 +89,17 @@ body {
     color: #333;
 }
 
-/* Meal card image */
 .meal-card img {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
-/* Meal card text */
 .meal-card p {
     font-size: 14px;
     color: #555;
 }
 
-/* Displaying meals in a grid */
 div>.meal-card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -112,7 +107,6 @@ div>.meal-card {
     margin-top: 20px;
 }
 
-/* No results message */
 #noResults {
     text-align: center;
     font-size: 18px;
