@@ -12,7 +12,7 @@ export class RegisterComponent {
 
   constructor(private _formBuilder: FormBuilder, private router: Router) {
     this.registerForm = this._formBuilder.group({
-      gender: ['', Validators.required],
+      gender: ['', [Validators.required, Validators.pattern("/\S/")]],
       firstName: ['', Validators.required],
       surName: ['', Validators.required],
       nickName: ['', Validators.required],

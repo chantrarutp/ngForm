@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -7,8 +7,9 @@ import { DataService } from '../services/data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
+  selectedDate: any;
   meals: any[] = [];
   keyword: string = '';
 

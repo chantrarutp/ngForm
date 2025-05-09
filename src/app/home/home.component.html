@@ -1,14 +1,24 @@
 <body>
     <h1>Ran Ahan</h1>
+    <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke"> location_on</mat-icon>
     <div class="top-buttons">
         <button type="button" (click)="onRegis()">Register</button>
         <button type="button" (click)="onLogin()">Login</button>
     </div>
 </body>
 
+<mat-form-field>
+    <mat-label>Menu for</mat-label>
+    <input matInput [matDatepicker]="dp3" disabled>
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+</mat-form-field>
+
 <div class="search-container">
     <input [(ngModel)]="keyword" placeholder="Search here..." />
     <button (click)="searchMeals()">Search</button>
+
 </div>
 
 <div *ngIf="meals.length > 0; else noResults">
@@ -16,6 +26,7 @@
         <h3>{{ meal.strMeal }}</h3>
         <img [src]="meal.strMealThumb" alt="{{ meal.strMeal }}" width="200" />
         <p>{{ meal.strArea }} | {{ meal.strCategory }}</p>
+        <p>How to Make: <a [href]="meal.strYoutube" target="_blank">{{ meal.strYoutube }}</a></p>
 
         <ul>
             <li *ngFor="let item of getIngredients(meal)">
