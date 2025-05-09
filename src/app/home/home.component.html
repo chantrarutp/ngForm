@@ -1,0 +1,30 @@
+<body>
+    <h1>Ran Ahan</h1>
+    <div class="top-buttons">
+        <button type="button" (click)="onRegis()">Register</button>
+        <button type="button" (click)="onLogin()">Login</button>
+    </div>
+</body>
+
+<div class="search-container">
+    <input [(ngModel)]="keyword" placeholder="Search here..." />
+    <button (click)="searchMeals()">Search</button>
+</div>
+
+<div *ngIf="meals.length > 0; else noResults">
+    <div *ngFor="let meal of meals" class="meal-card">
+        <h3>{{ meal.strMeal }}</h3>
+        <img [src]="meal.strMealThumb" alt="{{ meal.strMeal }}" width="200" />
+        <p>{{ meal.strArea }} | {{ meal.strCategory }}</p>
+
+        <ul>
+            <li *ngFor="let item of getIngredients(meal)">
+                {{ item.ingredient }} {{ item.measure }}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ng-template #noResults>
+    <p>No meals found.</p>
+</ng-template>

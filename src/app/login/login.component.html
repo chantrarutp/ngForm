@@ -1,0 +1,24 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link rel="stylesheet" href="login.component.css">
+</head>
+
+<body>
+    <div class="header-text">
+        <h1>Login</h1>
+    </div>
+    <div class="box">
+        <form>
+            <input type="Email" required placeholder="Email " minlength=11 maxlength="50"><br>
+            <input type="password" required placeholder="password " minlength=8 maxlength="50"><br>
+
+
+            <button type="submit">Login</button>
+            <p style="text-align: center;">or</p>
+            <button type="button" (click)="onRegis()">Register</button>
+            <button type="button" (click)="onHome()">Back</button>
+        </form>
+    </div>
+</body>

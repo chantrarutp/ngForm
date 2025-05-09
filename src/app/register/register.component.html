@@ -1,0 +1,72 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register page</title>
+    <link rel="stylesheet" href="register.component.css">
+</head>
+
+<body>
+    <h1>Register</h1>
+
+    <div class="box">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" formControlName="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" formControlName="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" formControlName="gender" value="other">
+            <label for="other">Other</label><br>
+            <div *ngIf="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched" class="alert">
+                กรุณาระบุเพศ*
+            </div>
+
+            <input type="text" id="firstName" formControlName="firstName" placeholder="Firstname"
+                [ngClass]="{'is-invalid': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}"><br>
+            <div *ngIf="(registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched)"
+                class="alert">กรุณากรอกชื่อ*</div>
+            <input type="text" id="surName" formControlName="surName" placeholder="Surname"
+                [ngClass]="{'is-invalid': registerForm.get('surName')?.invalid && registerForm.get('surName')?.touched}"><br>
+            <div *ngIf="(registerForm.get('surName')?.invalid && registerForm.get('surName')?.touched)" class="alert">
+                กรุณากรอกนามสกุล*</div>
+            <input type="text" id="nickName" formControlName="nickName" placeholder="Nickname"
+                [ngClass]="{'is-invalid': registerForm.get('nickName')?.invalid && registerForm.get('nickName')?.touched}"><br>
+            <div *ngIf="(registerForm.get('nickName')?.invalid && registerForm.get('nickName')?.touched)" class="alert">
+                กรุณากรอกชื่อเล่น*</div>
+            <input type="tel" id="phone" formControlName="phone" placeholder="Phone number xxx-xxx-xxxx" maxlength="12"
+                [ngClass]="{'is-invalid': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}"><br>
+            <div *ngIf="(registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched)" class="alert">
+                กรุณากรอกเบอร์โทรศัพท์*</div>
+            <input type="text" id="citizenID" formControlName="citizenID" placeholder="citizenID x-xxxx-xxxxx-xx-x"
+                maxlength="17"
+                [ngClass]="{'is-invalid': registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched}"><br>
+            <div *ngIf="(registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched)"
+                class="alert">
+                กรุณากรอกหมายเลขบัตรประชาชน*</div>
+            <label for="bd">DOB:</label>
+            <input type="date" id="dob" formControlName="dob" min="1940-01-01" max="2024-12-31"
+                [ngClass]="{'is-invalid': registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched}"><br>
+            <div *ngIf="(registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched)" class="alert">
+                กรุณากรอกวันเกิด*</div>
+
+
+            <input type="email" formControlName="email" placeholder="Email"
+                [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}"><br>
+            <div *ngIf="(registerForm.get('email')?.invalid && registerForm.get('email')?.touched)" class="alert">
+                กรุณากรอกอีเมล*</div>
+            <input type="password" formControlName="password" placeholder="Password"
+                [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"><br>
+            <div *ngIf="(registerForm.get('password')?.invalid && registerForm.get('password')?.touched)" class="alert">
+                กรุณากรอกรหัสผ่าน*</div>
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password"
+                [ngClass]="{'is-invalid': registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched}"><br>
+            <div *ngIf="(registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched)"
+                class="alert">
+                กรุณายืนยันรหัสผ่าน*</div>
+
+
+            <button type="button" (click)="onCancel()">Cancel</button>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
