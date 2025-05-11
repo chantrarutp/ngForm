@@ -6,21 +6,23 @@
         <button type="button" (click)="onLogin()">Login</button>
     </div>
 </header>
-<mat-form-field style="margin-left: 20px; margin-top: 20px;">
+
+<mat-form-field style="margin-left: 40px; margin-top: 20px;">
     <mat-label>Menu for</mat-label>
-    <input matInput [matDatepicker]="dp3" disabled>
+    <input matInput [matDatepicker]="dp3" [disabled]="false">
     <mat-hint>DD/MM/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
-    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    <mat-datepicker #dp3></mat-datepicker>
 </mat-form-field>
 
 <div class="search-container">
     <input [(ngModel)]="keyword" placeholder="Search here..." />
-    <button (click)="searchMeals()">Search</button>
-
+    <button type="button" (click)="searchMeals()">Search</button>
 </div>
 
-<div class="meal-list">
+<mat-spinner *ngIf="isLoading" class="loader"></mat-spinner>
+
+<div *ngIf="!isLoading" class="meal-list">
     <ng-container *ngIf="meals.length > 0; else noResults">
         <div *ngFor="let meal of meals" class="meal-card">
             <h3>{{ meal.strMeal }}</h3>
@@ -30,11 +32,6 @@
             <button mat-button (click)="openIngredientDialog(meal)">View Ingredients</button>
         </div>
     </ng-container>
-    <!-- <ul>
-            <li *ngFor="let item of getIngredients(meal)">
-                {{ item.ingredient }} {{ item.measure }}
-            </li>
-        </ul> -->
 </div>
 
 <ng-template #noResults>

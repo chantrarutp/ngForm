@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,14 +16,18 @@ export class HomeComponent implements OnInit {
   selectedDate: any;
   meals: any[] = [];
   keyword: string = '';
+  isLoading: boolean = false;
 
-  constructor(private router: Router, private dataService: DataService, private dialog: MatDialog) { }
+
+  constructor(private router: Router, private dataService: DataService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.searchMeals();
   }
 
   searchMeals(): void {
+    this.isLoading = true;
+
     this.dataService.searchMeals(this.keyword).subscribe(response => {
       console.log(response);
       if (response && response.meals) {
@@ -30,9 +35,11 @@ export class HomeComponent implements OnInit {
       } else {
         this.meals = [];
       }
+      this.isLoading = false;
     }, error => {
-      console.error('Error fetching data: ', error);
+      this.openSnackBar('An error occurred!', 'Retry');
       this.meals = [];
+      this.isLoading = false;
     });
   }
 
@@ -56,6 +63,12 @@ export class HomeComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '400px',
       data: { strMeal: meal.strMeal, ingredients }
+    });
+  }
+
+  openSnackBar(message: string, action: string = 'Close'): void {
+    this.snackBar.open(message, action, {
+      duration: 3000,
     });
   }
 

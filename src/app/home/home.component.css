@@ -17,7 +17,7 @@ header {
     max-width: 600px;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 40px;
     background-color: rgb(204, 204, 204);
     padding: 10px;
     border-radius: 8px;
@@ -70,6 +70,30 @@ header {
     background-color: #86e0ec;
 }
 
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 46%;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .meal-card {
     width: 90%;
     background-color: rgb(240, 240, 240);
@@ -105,6 +129,7 @@ header {
 
 .meal-list {
     display: grid;
+    margin-left: 10px;
     grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
     gap: 20px;
     padding: 20px;
