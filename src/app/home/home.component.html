@@ -1,13 +1,12 @@
-<body>
+<header>
     <h1>Ran Ahan</h1>
     <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke"> location_on</mat-icon>
     <div class="top-buttons">
         <button type="button" (click)="onRegis()">Register</button>
         <button type="button" (click)="onLogin()">Login</button>
     </div>
-</body>
-
-<mat-form-field>
+</header>
+<mat-form-field style="margin-left: 20px; margin-top: 20px;">
     <mat-label>Menu for</mat-label>
     <input matInput [matDatepicker]="dp3" disabled>
     <mat-hint>DD/MM/YYYY</mat-hint>
@@ -21,19 +20,21 @@
 
 </div>
 
-<div *ngIf="meals.length > 0; else noResults">
-    <div *ngFor="let meal of meals" class="meal-card">
-        <h3>{{ meal.strMeal }}</h3>
-        <img [src]="meal.strMealThumb" alt="{{ meal.strMeal }}" width="200" />
-        <p>{{ meal.strArea }} | {{ meal.strCategory }}</p>
-        <p>How to Make: <a [href]="meal.strYoutube" target="_blank">{{ meal.strYoutube }}</a></p>
-
-        <ul>
+<div class="meal-list">
+    <ng-container *ngIf="meals.length > 0; else noResults">
+        <div *ngFor="let meal of meals" class="meal-card">
+            <h3>{{ meal.strMeal }}</h3>
+            <img [src]="meal.strMealThumb" alt="{{ meal.strMeal }}" width="200" />
+            <p>{{ meal.strArea }} | {{ meal.strCategory }}</p>
+            <p>How to Make: <a [href]="meal.strYoutube" target="_blank">{{ meal.strYoutube }}</a></p>
+            <button mat-button (click)="openIngredientDialog(meal)">View Ingredients</button>
+        </div>
+    </ng-container>
+    <!-- <ul>
             <li *ngFor="let item of getIngredients(meal)">
                 {{ item.ingredient }} {{ item.measure }}
             </li>
-        </ul>
-    </div>
+        </ul> -->
 </div>
 
 <ng-template #noResults>

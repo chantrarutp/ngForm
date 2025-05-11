@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +16,7 @@ export class HomeComponent implements OnInit {
   meals: any[] = [];
   keyword: string = '';
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.searchMeals();
@@ -46,6 +49,14 @@ export class HomeComponent implements OnInit {
     }
 
     return ingredients;
+  }
+
+  openIngredientDialog(meal: any): void {
+    const ingredients = this.getIngredients(meal);
+    this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: { strMeal: meal.strMeal, ingredients }
+    });
   }
 
   onRegis() {

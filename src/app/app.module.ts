@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +19,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -54,13 +55,12 @@ export const MY_DATE_FORMATS = {
     MatIconModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatIconModule,
     MatNativeDateModule,
-    FormsModule,
     MatMomentDateModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
