@@ -1,4 +1,4 @@
-.filter-take {
+.box {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
@@ -9,12 +9,12 @@
     text-align: center;
 }
 
-.filter-take h2 {
+.box h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
-.filter-take input[type="text"] {
+.box input[type="text"] {
     width: 100%;
     padding: 10px 14px;
     font-size: 16px;
@@ -25,18 +25,18 @@
     transition: border-color 0.3s;
 }
 
-.filter-take input[type="text"]:focus {
+.box input[type="text"]:focus {
     border-color: rgb(194, 255, 71);
     outline: none;
 }
 
-.filter-take ul {
+.box ul {
     list-style-type: none;
     padding-left: 0;
     margin: 0 0 20px 0;
 }
 
-.filter-take li {
+.box li {
     background-color: #ffffff;
     margin-bottom: 10px;
     padding: 10px;
@@ -45,12 +45,29 @@
     transition: background-color 0.2s;
 }
 
-.filter-take li:hover {
+.box li:hover {
     background-color: #f0f0f0;
 }
 
-.filter-take p {
+.box p {
     font-weight: bold;
     font-size: 16px;
     margin-top: 10px;
+}
+
+.box button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-bottom: 20px;
+}
+
+.box button:hover {
+    background-color: #86e0ec;
+    transform: scale(1.03);
 }
