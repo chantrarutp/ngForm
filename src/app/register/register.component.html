@@ -43,6 +43,8 @@
             <div *ngIf="(registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched)"
                 class="alert">
                 กรุณากรอกหมายเลขบัตรประชาชน*</div>
+
+
             <label for="bd">DOB:</label>
             <input type="date" id="dob" formControlName="dob" min="1940-01-01" max="2024-12-31"
                 [ngClass]="{'is-invalid': registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched}"><br>

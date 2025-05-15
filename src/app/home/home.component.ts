@@ -4,6 +4,9 @@ import { DataService } from '../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map, catchError, debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -13,35 +16,39 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class HomeComponent implements OnInit {
+  searchControl = new FormControl();
   selectedDate: any;
   meals: any[] = [];
-  keyword: string = '';
   isLoading: boolean = false;
 
 
   constructor(private router: Router, private dataService: DataService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
-    this.searchMeals();
+  ngOnInit() {
+    this.searchControl.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => this.isLoading = true),
+      switchMap(keyword => {
+        keyword = keyword.trim();
+        if (!keyword) {
+          return this.dataService.getRandomMeals();
+        }
+        return this.dataService.searchMeals(keyword);
+      }),
+      map(res => res?.meals || []),
+      catchError(err => {
+        this.openSnackBar('An error occurred!', 'Retry');
+        console.error('API error', err);
+        return of([]);
+      }),
+      tap(() => this.isLoading = false)
+    ).subscribe(meals => {
+      this.meals = meals;
+    }); this.searchControl.setValue('');
+
   }
 
-  searchMeals(): void {
-    this.isLoading = true;
-
-    this.dataService.searchMeals(this.keyword).subscribe(response => {
-      console.log(response);
-      if (response && response.meals) {
-        this.meals = response.meals;
-      } else {
-        this.meals = [];
-      }
-      this.isLoading = false;
-    }, error => {
-      this.openSnackBar('An error occurred!', 'Retry');
-      this.meals = [];
-      this.isLoading = false;
-    });
-  }
 
   getIngredients(meal: any): { ingredient: string, measure: string }[] {
     const ingredients = [];
@@ -70,12 +77,5 @@ export class HomeComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 3000,
     });
-  }
-
-  onRegis() {
-    this.router.navigate(['/register']);
-  }
-  onLogin() {
-    this.router.navigate(['/login']);
   }
 }

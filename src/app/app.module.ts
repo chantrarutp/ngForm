@@ -23,6 +23,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './setting/setting.component';
+import { CitizenIDPipe } from './citizen-id.pipe';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -43,7 +47,11 @@ export const MY_DATE_FORMATS = {
     RegisterComponent,
     LoginComponent,
     TableBasicExample,
-    DialogComponent
+    DialogComponent,
+    NavbarComponent,
+    DashboardComponent,
+    SettingsComponent,
+    CitizenIDPipe
   ],
   imports: [
     BrowserModule,

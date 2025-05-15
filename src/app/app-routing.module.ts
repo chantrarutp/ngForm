@@ -4,11 +4,15 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { TableBasicExample } from './table/table.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './setting/setting.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'setting', component: SettingsComponent },
   { path: 'tb', component: TableBasicExample },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

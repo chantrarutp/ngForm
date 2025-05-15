@@ -1,10 +1,7 @@
+<app-navbar></app-navbar>
 <header>
     <h1>Ran Ahan</h1>
     <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke"> location_on</mat-icon>
-    <div class="top-buttons">
-        <button type="button" (click)="onRegis()">Register</button>
-        <button type="button" (click)="onLogin()">Login</button>
-    </div>
 </header>
 
 <mat-form-field style="margin-left: 40px; margin-top: 20px;">
@@ -15,10 +12,12 @@
     <mat-datepicker #dp3></mat-datepicker>
 </mat-form-field>
 
-<div class="search-container">
+<!-- <div class="search-container">
     <input [(ngModel)]="keyword" placeholder="Search here..." />
     <button type="button" (click)="searchMeals()">Search</button>
-</div>
+</div> -->
+
+<input class="search" [formControl]="searchControl" placeholder="Search meals..." />
 
 <mat-spinner *ngIf="isLoading" class="loader"></mat-spinner>
 
