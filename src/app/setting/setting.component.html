@@ -1,1 +1,15 @@
 <app-navbar></app-navbar>
+
+<div class="filter-take">
+    <h2>filter & take</h2>
+
+    <input id="myInput" type="text" placeholder="Type any word...." />
+
+    <ul>
+        <li *ngFor="let item of results">{{ item }}</li>
+    </ul>
+
+    <p *ngIf="results.length >= 3" style="color: rgb(28, 206, 28);">
+        ✅ Have received 3 words! ✅
+    </p>
+</div>

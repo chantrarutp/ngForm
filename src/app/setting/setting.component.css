@@ -1,0 +1,56 @@
+.filter-take {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #e9e9e9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.filter-take h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.filter-take input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+.filter-take input[type="text"]:focus {
+    border-color: rgb(194, 255, 71);
+    outline: none;
+}
+
+.filter-take ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0 0 20px 0;
+}
+
+.filter-take li {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+.filter-take li:hover {
+    background-color: #f0f0f0;
+}
+
+.filter-take p {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
