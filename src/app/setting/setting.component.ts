@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { concat, fromEvent, interval, merge, Subscription } from 'rxjs';
+import { BehaviorSubject, concat, fromEvent, interval, merge, Subscription } from 'rxjs';
 import { map, filter, take, repeat } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +11,7 @@ export class SettingsComponent implements AfterViewInit {
   results: string[] = [];
   currentValue: string = 'Waiting...';
   private subscription: Subscription | null = null;
-  msg = 'Waiting...';
+  message$ = new BehaviorSubject<string>('Waiting...');
 
   ngAfterViewInit() {
     const input = document.getElementById('myInput') as HTMLInputElement;
@@ -52,34 +52,24 @@ export class SettingsComponent implements AfterViewInit {
   }
 
   startConcat() {
-    this.msg = 'Starting concat...';
+    this.message$.next('Starting concat...');
     const obs1$ = interval(1000).pipe(take(3), map(i => `A${i}`));
     const obs2$ = interval(500).pipe(take(3), map(i => `B${i}`));
 
     concat(obs1$, obs2$).subscribe({
-      next: (val) => {
-        this.msg = `Concat: ${val}`;
-        console.log(val);
-      },
-      complete: () => {
-        this.msg = 'Concat Completed!';
-      }
+      next: val => this.message$.next(`Concat: ${val}`),
+      complete: () => this.message$.next('Concat Completed!')
     });
   }
 
   startMerge() {
-    this.msg = 'Starting merge...';
+    this.message$.next('Starting merge...');
     const obs1$ = interval(1000).pipe(take(3), map(i => `A${i}`));
     const obs2$ = interval(500).pipe(take(3), map(i => `B${i}`));
 
     merge(obs1$, obs2$).subscribe({
-      next: (val) => {
-        this.msg = `Merge: ${val}`;
-        console.log(val);
-      },
-      complete: () => {
-        this.msg = 'Merge Completed!';
-      }
+      next: val => this.message$.next(`Merge: ${val}`),
+      complete: () => this.message$.next('Merge Completed!')
     });
   }
 }

@@ -26,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './setting/setting.component';
-import { CitizenIDPipe } from './citizen-id.pipe';
+import { citizenID } from './citizen-id.pipe';
+import { PhonePipe } from './phone.pipe';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -51,7 +52,8 @@ export const MY_DATE_FORMATS = {
     NavbarComponent,
     DashboardComponent,
     SettingsComponent,
-    CitizenIDPipe
+    citizenID,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

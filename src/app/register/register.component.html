@@ -33,13 +33,14 @@
                 [ngClass]="{'is-invalid': registerForm.get('nickName')?.invalid && registerForm.get('nickName')?.touched}"><br>
             <div *ngIf="(registerForm.get('nickName')?.invalid && registerForm.get('nickName')?.touched)" class="alert">
                 กรุณากรอกชื่อเล่น*</div>
-            <input type="tel" id="phone" formControlName="phone" placeholder="Phone number xxx-xxx-xxxx" maxlength="12"
-                [ngClass]="{'is-invalid': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}"><br>
+            <input type="tel" id="phone" formControlName="phone" placeholder="Phone number" maxlength="10"
+                [ngClass]="{'is-invalid': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}"
+                [value]="registerForm.get('phone')?.value | phone" /><br>
             <div *ngIf="(registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched)" class="alert">
                 กรุณากรอกเบอร์โทรศัพท์*</div>
-            <input type="text" id="citizenID" formControlName="citizenID" placeholder="citizenID x-xxxx-xxxxx-xx-x"
-                maxlength="17"
-                [ngClass]="{'is-invalid': registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched}"><br>
+            <input type="text" id="citizenID" formControlName="citizenID" placeholder="citizenID" maxlength="13"
+                [ngClass]="{'is-invalid': registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched}"
+                [value]="registerForm.get('citizenID')?.value | citizenID" /><br>
             <div *ngIf="(registerForm.get('citizenID')?.invalid && registerForm.get('citizenID')?.touched)"
                 class="alert">
                 กรุณากรอกหมายเลขบัตรประชาชน*</div>

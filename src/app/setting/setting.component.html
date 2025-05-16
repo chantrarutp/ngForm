@@ -26,5 +26,5 @@
     <button (click)="startConcat()">Start Concat</button>
     <button (click)="startMerge()">Start Merge</button>
 
-    <div>{{ msg }}</div>
+    <div>{{ message$ | async }}</div>
 </div>

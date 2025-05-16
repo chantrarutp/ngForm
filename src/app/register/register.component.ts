@@ -16,7 +16,7 @@ export class RegisterComponent {
       firstName: ['', Validators.required],
       surName: ['', Validators.required],
       nickName: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern("^[0-9]{3}-[0-9]{3}-[0-9]{4}$")]],
+      phone: ['', Validators.required,],
       citizenID: ['', Validators.required],
       dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
