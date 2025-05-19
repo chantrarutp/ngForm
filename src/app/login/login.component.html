@@ -6,19 +6,15 @@
 </head>
 
 <body>
-    <div class="header-text">
-        <h1>Login</h1>
-    </div>
-    <div class="box">
-        <form>
-            <input type="Email" required placeholder="Email " minlength=11 maxlength="50"><br>
-            <input type="password" required placeholder="password " minlength=8 maxlength="50"><br>
+    <h1 class="header-text">Login</h1>
+    <form (ngSubmit)="onLogin()" class="box">
+        <input type="text" [(ngModel)]="username" name="username" placeholder="username" required />
+        <br />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="password" required />
+        <br />
+        <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        <button type="submit">Login</button>
+        <button type="button" (click)="onRegis()">Register</button>
+    </form>
 
-
-            <button type="submit">Login</button>
-            <p style="text-align: center;">or</p>
-            <button type="button" (click)="onRegis()">Register</button>
-            <button type="button" (click)="onHome()">Back</button>
-        </form>
-    </div>
 </body>

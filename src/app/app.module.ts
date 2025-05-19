@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { TableBasicExample } from './table/table.component';
@@ -28,6 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './setting/setting.component';
 import { citizenID } from './citizen-id.pipe';
 import { PhonePipe } from './phone.pipe';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -53,7 +55,8 @@ export const MY_DATE_FORMATS = {
     DashboardComponent,
     SettingsComponent,
     citizenID,
-    PhonePipe
+    PhonePipe,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,9 +81,12 @@ export const MY_DATE_FORMATS = {
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
-
+export class AppModule { }

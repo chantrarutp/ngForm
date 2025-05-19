@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,14 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router: Router) { }
+  username: string = '';
+  password: string = '';
+  errorMessage: string | undefined;
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   onRegis() {
     this.router.navigate(['/register']);
   }
 
-  onHome() {
-    this.router.navigate(['/home']);
+  onLogin() {
+    const isLoggedIn = this.authService.login(this.username, this.password);
+    if (isLoggedIn) {
+      this.router.navigate(['/home']);
+    } else {
+      this.errorMessage = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
+    }
   }
-}
 
+}
