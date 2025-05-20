@@ -23,7 +23,7 @@ export class LoginComponent {
     if (isLoggedIn) {
       this.router.navigate(['/home']);
     } else {
-      this.errorMessage = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
+      this.errorMessage = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง*';
     }
   }
 

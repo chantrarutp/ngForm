@@ -12,9 +12,8 @@
         <br />
         <input type="password" [(ngModel)]="password" name="password" placeholder="password" required />
         <br />
-        <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+        <p *ngIf="errorMessage" class="alert">{{ errorMessage }}</p>
         <button type="submit">Login</button>
         <button type="button" (click)="onRegis()">Register</button>
     </form>
-
 </body>

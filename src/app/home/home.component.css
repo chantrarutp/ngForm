@@ -1,25 +1,31 @@
-header {
+body {
     font-family: Arial, sans-serif;
-    background-color: rgb(194, 255, 71);
     margin: 0;
     padding: 0;
+    background-color: whitesmoke;
+    color: #383838;
+}
+
+header {
+    background-color: rgb(194, 255, 71);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20vh;
     color: rgb(56, 56, 56);
+    padding: 0;
 }
 
 .search {
-    background-color: rgb(240, 240, 240);
+    background-color: #f0f0f0;
     padding: 10px 14px;
     border: 2px solid #ccc;
     border-radius: 6px;
-    margin-left: 30px;
     font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
     width: 100%;
     max-width: 400px;
+    margin-left: 30px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .search:focus {
@@ -27,44 +33,6 @@ header {
     border-color: rgb(194, 255, 71);
     box-shadow: 0 0 5px rgba(50, 51, 56, 0.5);
 }
-
-/* .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 40px;
-    background-color: rgb(204, 204, 204);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.search-container input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #cbcbcb;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.search-container button {
-    padding: 10px 15px;
-    background-color: gray;
-    color: whitesmoke;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.search-container button:hover {
-    background-color: #86e0ec;
-} */
 
 .loader {
     position: fixed;
@@ -90,19 +58,34 @@ header {
     }
 }
 
+.meal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: flex-start;
+    margin-left: 10px;
+}
+
 .meal-card {
-    width: 90%;
-    background-color: rgb(240, 240, 240);
+    background-color: #f0f0f0;
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0.5, 0.4);
     transition: transform 0.3s ease;
-    margin-bottom: 20px;
     text-align: center;
+    width: 90%;
+    margin-bottom: 20px;
 }
 
 .meal-card:hover {
     transform: translateY(-5px);
+}
+
+.meal-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .meal-card h3 {
@@ -111,31 +94,29 @@ header {
     color: #333;
 }
 
-.meal-card img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    margin-left: auto;
-}
-
 .meal-card p {
     font-size: 14px;
     color: #555;
 }
 
-.meal-list {
-    display: grid;
-    margin-left: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
-    gap: 20px;
-    padding: 20px;
-    justify-items: center;
+.meal-title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    cursor: help;
 }
 
-
 a {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: #1976d2;
-    text-decoration: none;
 }
 
 #noResults {
@@ -143,4 +124,44 @@ a {
     font-size: 18px;
     color: #888;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 15px;
+    }
+
+    .form-search-row {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .search,
+    mat-form-field {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .meal-title {
+        max-width: 100%;
+        font-size: 18px;
+    }
+
+    .meal-list {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .meal-card {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .loader {
+        top: 45%;
+        left: 45%;
+        width: 36px;
+        height: 36px;
+    }
 }

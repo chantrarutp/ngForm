@@ -19,7 +19,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        // ✅ แสดง error เฉพาะกรณี status >= 400 และไม่ใช่ status 0
         if (error.status && error.status >= 400) {
           this.dialog.open(ErrorDialogComponent, {
             data: {

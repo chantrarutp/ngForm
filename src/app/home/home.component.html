@@ -1,21 +1,17 @@
 <app-navbar></app-navbar>
+
 <header>
     <h1>Ran Ahan</h1>
-    <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke"> location_on</mat-icon>
+    <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke">location_on</mat-icon>
 </header>
 
 <mat-form-field style="margin-left: 40px; margin-top: 20px;">
     <mat-label>Menu for</mat-label>
-    <input matInput [matDatepicker]="dp3" [disabled]="false">
+    <input matInput [matDatepicker]="dp3">
     <mat-hint>DD/MM/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
     <mat-datepicker #dp3></mat-datepicker>
 </mat-form-field>
-
-<!-- <div class="search-container">
-    <input [(ngModel)]="keyword" placeholder="Search here..." />
-    <button type="button" (click)="searchMeals()">Search</button>
-</div> -->
 
 <input class="search" [formControl]="searchControl" placeholder="Search meals..." />
 
@@ -24,15 +20,22 @@
 <div *ngIf="!isLoading" class="meal-list">
     <ng-container *ngIf="meals.length > 0; else noResults">
         <div *ngFor="let meal of meals" class="meal-card">
-            <h3>{{ meal.strMeal }}</h3>
-            <img [src]="meal.strMealThumb" alt="{{ meal.strMeal }}" width="200" />
+            <h3 class="meal-title" [title]="meal.strMeal">{{ meal.strMeal }}</h3>
+            <img [src]="meal.strMealThumb" [alt]="meal.strMeal" width="200" />
             <p>{{ meal.strArea }} | {{ meal.strCategory }}</p>
-            <p>How to Make: <a [href]="meal.strYoutube" target="_blank">{{ meal.strYoutube }}</a></p>
-            <button mat-button (click)="openIngredientDialog(meal)">View Ingredients</button>
+            <p>
+                How to Make:
+                {{ meal.strYoutube ? '' : '-' }}
+                <a *ngIf="meal.strYoutube" [href]="meal.strYoutube" target="_blank">{{ meal.strYoutube }}</a>
+            </p>
+
+            <button mat-button (click)="openIngredientDialog(meal)">
+                View Ingredients
+            </button>
         </div>
     </ng-container>
 </div>
 
 <ng-template #noResults>
-    <p>No meals found.</p>
+    <p id="noResults">No meals found.</p>
 </ng-template>

@@ -10,14 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router) {
-    this.registerForm = this._formBuilder.group({
-      gender: ['', [Validators.required, Validators.pattern("/\S/")]],
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.registerForm = this.fb.group({
+      gender: ['', Validators.required],
       firstName: ['', Validators.required],
       surName: ['', Validators.required],
       nickName: ['', Validators.required],
-      phone: ['', Validators.required,],
-      citizenID: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      citizenID: ['', [Validators.required, Validators.pattern(/^\d{13}$/)]],
       dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -36,5 +36,10 @@ export class RegisterComponent {
 
   onCancel() {
     this.router.navigate(['/login']);
+  }
+
+  isInvalid(controlName: string): boolean {
+    const control = this.registerForm.get(controlName);
+    return !!(control && control.invalid && control.touched);
   }
 }
