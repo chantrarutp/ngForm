@@ -14,6 +14,14 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) { }
 
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/home']);
+    }
+  }
+
+
   onRegis() {
     this.router.navigate(['/register']);
   }

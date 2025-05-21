@@ -14,6 +14,10 @@ export class NavbarComponent {
     this.menuOpen = !this.menuOpen;
   }
 
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 
 }
 

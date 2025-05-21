@@ -5,15 +5,18 @@
     <mat-icon style="margin-bottom: 20px; color: brown;" matTooltip="@253 Asoke">location_on</mat-icon>
 </header>
 
-<mat-form-field style="margin-left: 40px; margin-top: 20px;">
-    <mat-label>Menu for</mat-label>
-    <input matInput [matDatepicker]="dp3">
-    <mat-hint>DD/MM/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
-    <mat-datepicker #dp3></mat-datepicker>
-</mat-form-field>
+<div class="form-search-row">
+    <mat-form-field appearance="fill">
+        <mat-label>Menu for</mat-label>
+        <input matInput [matDatepicker]="dp3" [disabled]="false">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3></mat-datepicker>
+    </mat-form-field>
 
-<input class="search" [formControl]="searchControl" placeholder="Search meals..." />
+    <input class="search" [formControl]="searchControl" placeholder="Search meals..." />
+</div>
+
 
 <mat-spinner *ngIf="isLoading" class="loader"></mat-spinner>
 

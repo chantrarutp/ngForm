@@ -79,7 +79,7 @@ export const MY_DATE_FORMATS = {
     MatProgressSpinnerModule,
     MatSnackBarModule
   ],
-  providers: [
+  providers: [PhonePipe, citizenID,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     {
       provide: HTTP_INTERCEPTORS,

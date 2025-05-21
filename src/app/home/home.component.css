@@ -126,9 +126,10 @@ a {
     margin-top: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
     header {
         padding: 15px;
+        text-align: center;
     }
 
     .form-search-row {
@@ -137,30 +138,42 @@ a {
         margin: 10px;
     }
 
-    .search,
-    mat-form-field {
-        width: 90%;
+    mat-form-field,
+    .search {
+        display: block;
+        margin: 10px auto;
         max-width: 90%;
+        width: 90%;
+        text-align: center;
+    }
+
+    .meal-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 10px;
+    }
+
+    .meal-card {
+        width: 90%;
+        max-width: 360px;
+        padding: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
     }
 
     .meal-title {
         max-width: 100%;
         font-size: 18px;
-    }
-
-    .meal-list {
-        grid-template-columns: 1fr;
-        padding: 10px;
-    }
-
-    .meal-card {
-        width: 100%;
-        padding: 12px;
+        text-align: center;
     }
 
     .loader {
+        position: fixed;
         top: 45%;
-        left: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 36px;
         height: 36px;
     }

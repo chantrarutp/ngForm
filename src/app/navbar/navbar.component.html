@@ -4,14 +4,16 @@
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a routerLink="/setting">Setting</a></li>
+        <li><button (click)="logout()">Log out</button></li>
     </ul>
 
-    <button class="navbar-toggler" (click)="toggleMenu()">
-        ☰
-    </button>
+    <button class="navbar-toggler" (click)="toggleMenu()">☰</button>
 
     <ul class="dropdown-menu" [class.show]="menuOpen">
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/setting">Setting</a></li>
+        <li><button (click)="logout()">Log out</button></li>
     </ul>
+
 </nav>
